@@ -23,8 +23,8 @@ def read_tags(path: str) -> Iterator[List[List[str]]]:
 #splits and randomizes data
 def main(args: argparse.Namespace) -> None:
     corpus = list(read_tags(args.input))
-    random.Random().shuffle(corpus)
-    corpus
+    random.seed(args.seed)
+    random.shuffle(corpus)
     args.train = corpus[:8758]
     args.dev = corpus[8758:9854]
     args.test = corpus[9854:]
